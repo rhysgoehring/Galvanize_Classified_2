@@ -1,20 +1,23 @@
 {
   "name": "galvanize-classified-ad",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./server/server.js",
     "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "description": "",
   "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "knex": "^0.12.6",
+    "materialize-css": "^0.98.2",
     "morgan": "^1.8.1",
     "pg": "^6.1.0"
   },
