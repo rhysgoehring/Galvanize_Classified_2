@@ -14,7 +14,8 @@
     vm.ad = {}
     vm.ads = []
     vm.$onInit = onInit
-    vm.toggleAds = toggleAds
+    vm.filtering = filtering
+    vm.showNewAd = showNewAd
 
 
   function onInit() {
@@ -22,9 +23,13 @@
       vm.ads = response
     })
   }
-  function toggleAds(){
+  function showNewAd(){
     vm.showAds = vm.showAds ? !vm.showAds : true
   }
+  function filtering(ordering) {
+    vm.selection = ordering
+  }
+
 }
 
 }())

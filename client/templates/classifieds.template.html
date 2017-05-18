@@ -2,19 +2,34 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
+      <ul class="right hide-on-med-and-down valign-wrapper">
+        <li class="valign">
+          <select class="browser-default" ng-model="$ctrl.ordering" ng-change="$ctrl.filtering(ordering)" id="sort">
+            <option value="" disabled selected>Choose how to sort</option>
+            <option value="price">By Price</option>
+            <option value="title">By Title</option>
+            <option value="-created_at">Most Recent</option>
+          </select>
+        </li>
+        <li class="valign">
+          <div class="input-field inline">
+            <input id="filter" type="search" ng-model="searchFilter">
+            <label for="search" data-error="wrong" data-success="right">Filter</label>
+          </div>
+        </li>
+
+
       </ul>
     </div>
   </nav>
 </header>
+
 <main class="container">
   <div class="row">
-    <div class="card" ng-repeat="ad in $ctrl.ads">
+    <div class="card" ng-repeat="ad in $ctrl.ads | orderBy: $ctrl.selection | filter: searchFilter">
       <div class="card-title">{{ ad.title }}</div>
       <div class="card-image">
-        <img ng-src="{{ ad.item_image }}"/>
+        <img ng-src="{{ ad.item_image }}" />
       </div>
       <div class="card-content">
         <p>Description: {{ ad.description }}</p>
