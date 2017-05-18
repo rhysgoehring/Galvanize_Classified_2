@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   knex('classifieds').select('id', 'title', 'description', 'price', 'item_image').then((classifieds) => {
+      console.log('data on server side', classifieds)
       res.send(classifieds);
     })
     .catch((err) => {
