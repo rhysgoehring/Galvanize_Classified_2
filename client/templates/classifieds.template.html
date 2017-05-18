@@ -1,8 +1,9 @@
 <header class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#!" class="brand-logo">rhysList</a>
       <ul class="right hide-on-med-and-down valign-wrapper">
+        <li class="valign"><a class="waves-effect waves-light btn" ng-click="$ctrl.showNewAd()">New Ad</a></li>
         <li class="valign">
           <select class="browser-default" ng-model="$ctrl.ordering" ng-change="$ctrl.filtering(ordering)" id="sort">
             <option value="" disabled selected>Choose how to sort</option>
@@ -17,14 +18,26 @@
             <label for="search" data-error="wrong" data-success="right">Filter</label>
           </div>
         </li>
-
-
       </ul>
     </div>
   </nav>
 </header>
 
 <main class="container">
+  <div class="row" ng-show="$ctrl.showAd">
+    <form name="$ctrl.adForm" ng-submit="$ctrl.createAd()">
+     <label for="title">Title</label>
+     <input id="title" ng-model="$ctrl.ad.title" class="form-control" required name="title"><br>
+     <label for="description">Description</label>
+     <input id="description" ng-model="$ctrl.ad.description" class="form-control" required name="description"><br>
+     <label for="price">Price</label>
+     <input id="price" ng-model="$ctrl.ad.price" class="form-control" required name="price"><br>
+     <label for="image">Image URL</label>
+     <input id="image" ng-model="$ctrl.ad.image" class="form-control" required name="image">
+     <br>
+     <button type="submit" class="btn" id="newAdBtn">Create Ad</button>
+   </form>
+  </div>
   <div class="row">
     <div class="card" ng-repeat="ad in $ctrl.ads | orderBy: $ctrl.selection | filter: searchFilter">
       <div class="card-title">{{ ad.title }}</div>
@@ -34,6 +47,7 @@
       <div class="card-content">
         <p>Description: {{ ad.description }}</p>
         <p>Price: {{ ad.price }}</p>
+        <p>Created at: {{ ad.created_at | date:'short' }}</p>
       </div>
     </div>
   </div>

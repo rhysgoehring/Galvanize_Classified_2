@@ -11,25 +11,40 @@
 
   function adController(adService) {
     const vm = this
-    vm.ad = {}
-    vm.ads = []
     vm.$onInit = onInit
     vm.filtering = filtering
     vm.showNewAd = showNewAd
+    vm.createAd = createAd
 
 
-  function onInit() {
-    adService.getAds().then((response) => {
-      vm.ads = response
-    })
-  }
-  function showNewAd(){
-    vm.showAds = vm.showAds ? !vm.showAds : true
-  }
-  function filtering(ordering) {
-    vm.selection = ordering
-  }
+    function onInit() {
+      adService.getAds().then((response) => {
+        vm.ads = response
+      })
+    }
 
-}
+    function showNewAd() {
+      vm.showAd = vm.showAd ? !vm.showAd : true
+    }
+
+    function createAd() {
+      vm.ad = {
+        title: vm.ad.title,
+        description: vm.ad.description,
+        item_image: vm.ad.image,
+        price: vm.ad.price,
+        created_at: new Date()
+      }
+      adService.postAd(vm.ad).then((response) => {
+        vm.ads.push(response)
+        delete vm.ad
+      })
+    }
+
+    function filtering(ordering) {
+      vm.selection = ordering
+    }
+
+  }
 
 }())
