@@ -47,8 +47,8 @@
         case 'price':
           vm.sorted = 'price';
           break;
-        case 'date':
-          vm.sorted = 'created_at';
+        case 'title':
+          vm.sorted = 'title';
           break;
         default:
           vm.sorted = "price"
