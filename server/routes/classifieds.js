@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   knex('classifieds').select('id', 'title', 'description', 'price', 'item_image').then((classifieds) => {
-      console.log('data on server side', classifieds)
       res.send(classifieds);
     })
     .catch((err) => {
@@ -16,7 +15,6 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id
-  console.log('id is    ', id)
   knex('classifieds').where('id', id)
     .select(['id', 'title', 'description', 'price', 'item_image']).then((classifieds) => {
       res.send(classifieds[0]);
