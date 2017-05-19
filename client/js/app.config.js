@@ -13,7 +13,12 @@
       .state(
        { name: 'home',
          url: '/',
-         component: 'ads'})
+         component: 'ads'}
+       )
+       .state(
+        { name: 'edit',
+          url: '/classifieds/:id/edit',
+          component: 'editAd'})
   }
 
 }());

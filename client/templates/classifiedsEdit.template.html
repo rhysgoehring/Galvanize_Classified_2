@@ -1,0 +1,14 @@
+<div class="row" ng-show="$ctrl.showAd">
+  <form name="$ctrl.editForm" ng-submit="$ctrl.updateAd()">
+    <label for="title">Title</label>
+    <input id="title" ng-model="$ctrl.ad.title" class="form-control" required name="title"><br>
+    <label for="description">Description</label>
+    <input id="description" ng-model="$ctrl.ad.description" class="form-control" required name="description"><br>
+    <label for="price">Price</label>
+    <input id="price" ng-model="$ctrl.ad.price" class="form-control" required name="price"><br>
+    <label for="image">Image URL</label>
+    <input id="image" ng-model="$ctrl.ad.image" class="form-control" required name="image">
+    <br>
+    <button type="submit" class="btn" id="newAdBtn">Edit Ad</button>
+  </form>
+</div>
