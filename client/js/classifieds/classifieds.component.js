@@ -15,6 +15,7 @@
     vm.filtering = filtering
     vm.showNewAd = showNewAd
     vm.createAd = createAd
+    vm.deleteAd = deleteAd
 
 
     function onInit() {
@@ -45,6 +46,17 @@
       vm.selection = ordering
     }
 
+    function deleteAd(id) {
+      adService.deleteAd(id).then((response) => {
+        for (let ad of vm.ads) {
+          if (ad.id == id) {
+            ad = null
+          }
+        }
+        onInit()
+      })
+    }
   }
+
 
 }())

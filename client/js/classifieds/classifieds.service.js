@@ -14,10 +14,15 @@
       })
     }
     this.postAd = function(postAd) {
-       return $http.post('/api/classifieds', postAd).then((result) => {
-         return result.data
+       return $http.post('/api/classifieds', postAd).then((response) => {
+         return response.data
        })
      }
+    this.deleteAd = function(id) {
+      return $http.delete(`/api/classifieds/${id}`).then((response) => {
+        return response.data
+      })
+    }
 
   }
 
