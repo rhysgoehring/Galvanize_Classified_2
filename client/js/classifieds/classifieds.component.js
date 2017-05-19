@@ -12,11 +12,11 @@
   function adController(adService) {
     const vm = this
     vm.$onInit = onInit
-    vm.filtering = filtering
     vm.showNewAd = showNewAd
     vm.createAd = createAd
     vm.deleteAd = deleteAd
-
+    vm.filterAds = filterAds
+    vm.filtering = 'price'
 
     function onInit() {
       adService.getAds().then((response) => {
@@ -42,8 +42,17 @@
       })
     }
 
-    function filtering(ordering) {
-      vm.selection = ordering
+    function filterAds() {
+      switch (vm.filtering) {
+        case 'price':
+          vm.sorted = 'price';
+          break;
+        case 'date':
+          vm.sorted = 'created_at';
+          break;
+        default:
+          vm.sorted = "price"
+      }
     }
 
     function deleteAd(id) {

@@ -5,11 +5,10 @@
       <ul class="right hide-on-med-and-down valign-wrapper">
         <li class="valign"><a class="waves-effect waves-light btn" ng-click="$ctrl.showNewAd()">New Ad</a></li>
         <li class="valign">
-          <select class="browser-default" ng-model="$ctrl.ordering" ng-change="$ctrl.filtering(ordering)" id="sort">
-            <option value="" disabled selected>Choose how to sort</option>
+          <select class="browser-default" ng-model="$ctrl.filtering" ng-change="$ctrl.filterAds()" id="sort">
+            <option value="" disabled selected>Sort</option>
             <option value="price">By Price</option>
-            <option value="title">By Title</option>
-            <option value="-created_at">Most Recent</option>
+            <option value="created_at">Most Recent</option>
           </select>
         </li>
         <li class="valign">
@@ -39,7 +38,7 @@
     </form>
   </div>
   <div class="row">
-    <div class="card" ng-repeat="ad in $ctrl.ads | orderBy: $ctrl.selection | filter: searchFilter">
+    <div class="card" ng-repeat="ad in $ctrl.ads | orderBy: $ctrl.sorted | filter: searchFilter">
       <div class="card-title">{{ ad.title }}</div>
       <div class="card-image">
         <img ng-src="{{ ad.item_image }}" />
